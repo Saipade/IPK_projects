@@ -1,3 +1,11 @@
+/**
+ * 
+ * Subject: 1. project of IPP - Computer Communications and Networks subject
+ * @file server.cpp
+ * @author Maksim Tikhonov (xtikho00)
+ * @brief Server class methods definition
+ * 
+ */
 #include "server.hpp"
 
 Server::Server(int port) { 
@@ -64,30 +72,30 @@ void Server::getCPULoad() {
     int totalJiffies1, totalJiffies2, busyJiffies1, busyJiffies2;
     int cpuLoad;
     calculateCurrentCPULoad(totalJiffies1, busyJiffies1);
-    sleep(5);
+    sleep(3);
     calculateCurrentCPULoad(totalJiffies2, busyJiffies2);
     cpuLoad = (busyJiffies2 - busyJiffies1) * 100 / (totalJiffies2 - totalJiffies1);
-    response = to_string(cpuLoad) + "%";
+    response += to_string(cpuLoad) + "%";
 }
 
 void Server::calculateCurrentCPULoad(int &total, int &busy) {
     ifstream infile("/proc/stat");
-    if (infile.good()) {
-        string sLine;
-        vector<string> tmpVs;
-        vector<int> tmpVi;
-        getline(infile, sLine);
-
-        istringstream iss(sLine);
-        for (string token; getline(iss, token, ' '); ) 
-            tmpVs.push_back(token);
-
-        transform(tmpVs.begin() + 2, tmpVs.end(), back_inserter(tmpVi),
-                [](const string &s) { return stoi(s); });
-
-        total = tmpVi[0] + tmpVi[1] + tmpVi[2] + tmpVi[3] + tmpVi[4] + tmpVi[6];
-        busy = tmpVi[0] + tmpVi[1] + tmpVi[2];
-    }
+    if (infile.bad()) 
+        cerr << "Can't read /proc/stat" << endl;
+    string sLine;
+    vector<string> tmpVs;
+    vector<int> tmpVi;
+    getline(infile, sLine);
+    istringstream iss(sLine);
+    for (string i; getline(iss, i, ' '); )
+        tmpVs.push_back(i);
+    tmpVs = vector<string>(tmpVs.begin() + 2, tmpVs.end());                             // get rid of 'cpu' and additional space character
+    for (vector<string>::const_iterator p = tmpVs.begin(); p != tmpVs.end(); p++)       // convert vector<string> to vector<int>
+        tmpVi.push_back(atoi((*p).c_str()));
+    
+    total = tmpVi[0] + tmpVi[1] + tmpVi[2] + tmpVi[3] + tmpVi[4] +  tmpVi[5] + tmpVi[6];
+    busy = tmpVi[0] + tmpVi[1] + tmpVi[2];
+    
 }
 
 void Server::waitForConnection() {
@@ -108,5 +116,6 @@ void Server::waitForConnection() {
         parseMessage();
         write(newSocket, response.data(), response.length());
         close(newSocket);
+        response.clear();
     }
 }

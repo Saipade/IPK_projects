@@ -1,3 +1,12 @@
+/**
+ *
+ * Subject: 1. project of IPP - Computer Communications and Networks subject
+ * @file server.hpp
+ * @author Maksim Tikhonov (xtikho00)
+ * @brief Server class interface
+ *
+ */
+
 #ifndef server_hpp
 #define server_hpp
 
@@ -17,6 +26,7 @@
 #include <regex>
 #include <fstream>
 #include <valarray>
+#include <numeric>
 
 #define BUFFER_SIZE 1024
 #define MAX_NUMBER_OF_CONNECTIONS 118 // Ecc. 1:18
@@ -26,7 +36,6 @@ using namespace std;
 class Server {
 
     private:
-
         int fd;                                             // server's file descriptor
         struct sockaddr_in address;                         // socket's address
 
@@ -50,7 +59,6 @@ class Server {
         /**
          * @brief Calculates CPU load
          * 
-         * @return string 
          */
         void getCPULoad();
 
@@ -67,7 +75,6 @@ class Server {
         void parseMessage();
 
     public:
-
         /**
          * @brief Constructs a new Server object based on port number, creates socket, sets attributes
          * 
