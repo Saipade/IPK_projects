@@ -74,7 +74,7 @@ void Server::getCPULoad() {
     calculateCurrentCPULoad(totalJiffies1, busyJiffies1);
     sleep(1);
     calculateCurrentCPULoad(totalJiffies2, busyJiffies2);
-    cpuLoad = (busyJiffies2 - busyJiffies1) / (totalJiffies2 - totalJiffies1) * 100;
+    cpuLoad = (busyJiffies2 - busyJiffies1) * 100 / (totalJiffies2 - totalJiffies1) ;
     response += to_string(cpuLoad) + "%";
 }
 
