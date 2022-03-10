@@ -18,17 +18,17 @@ executable name - hinfosvc
 ./hinfosvc **port number**
 
 ### Possible requests:
-GET http\u{200B}://localhost:**port number**/hostname
-GET http&#x200B://localhost:**port number**/cpu-name
-GET http&#x200B://localhost:**port number**/load
+GET http&#x200B;://localhost:**port number**/hostname
+GET http&#x200B;://localhost:**port number**/cpu-name
+GET http&#x200B;://localhost:**port number**/load
 
 ### Examples
 ```
-1. $ ./hinfosvc 12345 & GET http&#x200B://localhost:12345/hostname & GET http&#x200B://localhost:12345/cpu-name
-2. $ ./hinfosvc 12345 & GET http&#x200B://localhost:12345/load
-   $ GET http&#x200B://localhost:12345/load
+1. $ ./hinfosvc 12345 & GET http&#x200B;://localhost:12345/hostname & GET http&#x200B;://localhost:12345/cpu-name
+2. $ ./hinfosvc 12345 & GET http&#x200B;://localhost:12345/load
+   $ GET http&#x200B;://localhost:12345/load
 3. $ ./hinfosvc 12345 &
-   $ GET http&#x200B://localhost:12345/cpu-name
+   $ GET http&#x200B;://localhost:12345/cpu-name
 ```
 
 ### Killing server
