@@ -15,12 +15,12 @@ Implementation of the 1. IPK project -- simple HTTP server which is capable of p
 ## Usage
 
 ### Execute: 
-- ./hinfosvc **port number**
+- ./hinfosvc **port_number**
 
 ### Possible requests:
-- GET http&#x200B;://localhost:**port number**/hostname
-- GET http&#x200B;://localhost:**port number**/cpu-name
-- GET http&#x200B;://localhost:**port number**/load
+- GET http&#x200B;://localhost:**port_number**/hostname
+- GET http&#x200B;://localhost:**port_number**/cpu-name
+- GET http&#x200B;://localhost:**port_number**/load
 
 ### Examples
 ```
