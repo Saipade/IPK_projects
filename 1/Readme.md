@@ -2,25 +2,25 @@
 
 ## Brief description
 
-Implementation of the 1. IPK project -- simple HTTP server which is capable of providing basic system information (cpu name, hostname, cpu load). 
+Implementation of the 1. IPK project -- simple HTTP server which is capable of providing basic system information such as CPU name, hostname and CPU load. 
 
 ## Building the program
 
-make all - build
+- to build: make all
 
-make zip - make archive
+- to make archive: make zip
 
-executable name - hinfosvc
+- executable name - hinfosvc
 
 ## Usage
 
 ### Execute: 
-./hinfosvc **port number**
+- ./hinfosvc **port number**
 
 ### Possible requests:
-GET http&#x200B;://localhost:**port number**/hostname
-GET http&#x200B;://localhost:**port number**/cpu-name
-GET http&#x200B;://localhost:**port number**/load
+- GET http&#x200B;://localhost:**port number**/hostname
+- GET http&#x200B;://localhost:**port number**/cpu-name
+- GET http&#x200B;://localhost:**port number**/load
 
 ### Examples
 ```
@@ -31,7 +31,11 @@ GET http&#x200B;://localhost:**port number**/load
    $ GET http://localhost:12345/cpu-name
 ```
 
-### Killing server
+### Killing the server
 
-CTRL+C
+- CTRL+C
+
+## Author
+
+- Maksim Tikhonov xtikho00
 
