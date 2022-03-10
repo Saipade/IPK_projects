@@ -18,7 +18,7 @@ executable name - hinfosvc
 ./hinfosvc **port number**
 
 ### Possible requests:
-GET http&#x200B://localhost:**port number**/hostname
+GET http\u{200B}://localhost:**port number**/hostname
 GET http&#x200B://localhost:**port number**/cpu-name
 GET http&#x200B://localhost:**port number**/load
 
