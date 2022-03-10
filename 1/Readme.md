@@ -24,11 +24,11 @@ GET http&#x200B;://localhost:**port number**/load
 
 ### Examples
 ```
-1. $ ./hinfosvc 12345 & GET http&#x200B;://localhost:12345/hostname & GET http&#x200B;://localhost:12345/cpu-name
-2. $ ./hinfosvc 12345 & GET http&#x200B;://localhost:12345/load
-   $ GET http&#x200B;://localhost:12345/load
+1. $ ./hinfosvc 12345 & GET http://localhost:12345/hostname & GET http://localhost:12345/cpu-name
+2. $ ./hinfosvc 12345 & GET http://localhost:12345/load
+   $ GET http://localhost:12345/load
 3. $ ./hinfosvc 12345 &
-   $ GET http&#x200B;://localhost:12345/cpu-name
+   $ GET http://localhost:12345/cpu-name
 ```
 
 ### Killing server
