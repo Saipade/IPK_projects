@@ -72,9 +72,9 @@ void Server::getCPULoad() {
     int totalJiffies1, totalJiffies2, busyJiffies1, busyJiffies2;
     int cpuLoad;
     calculateCurrentCPULoad(totalJiffies1, busyJiffies1);
-    sleep(3);
+    sleep(1);
     calculateCurrentCPULoad(totalJiffies2, busyJiffies2);
-    cpuLoad = (busyJiffies2 - busyJiffies1) * 100 / (totalJiffies2 - totalJiffies1);
+    cpuLoad = (busyJiffies2 - busyJiffies1) / (totalJiffies2 - totalJiffies1) * 100;
     response += to_string(cpuLoad) + "%";
 }
 
@@ -89,13 +89,12 @@ void Server::calculateCurrentCPULoad(int &total, int &busy) {
     istringstream iss(sLine);
     for (string i; getline(iss, i, ' '); )
         tmpVs.push_back(i);
-    tmpVs = vector<string>(tmpVs.begin() + 2, tmpVs.end());                             // get rid of 'cpu' and additional space character
-    for (vector<string>::const_iterator p = tmpVs.begin(); p != tmpVs.end(); p++)       // convert vector<string> to vector<int>
+    tmpVs = vector<string>(tmpVs.begin() + 2, tmpVs.end());                                         // get rid of 'cpu' and additional space character
+    for (vector<string>::const_iterator p = tmpVs.begin(); p != tmpVs.end(); p++)                   // convert vector<string> to vector<int>
         tmpVi.push_back(atoi((*p).c_str()));
-    
-    total = tmpVi[0] + tmpVi[1] + tmpVi[2] + tmpVi[3] + tmpVi[4] +  tmpVi[5] + tmpVi[6];
-    busy = tmpVi[0] + tmpVi[1] + tmpVi[2];
-    
+    // [0]user [1]nice [2]system [3]idle [4]iowait [5]irq [6]softirq [7]steal [8]guest [9]guest_nice
+    total = tmpVi[0] + tmpVi[1] + tmpVi[2] + tmpVi[3] + tmpVi[4] +  tmpVi[5] + tmpVi[6] + tmpVi[7]; // total number of jiffies
+    busy = tmpVi[0] + tmpVi[1] + tmpVi[2] + tmpVi[5] + tmpVi[6] + tmpVi[7];                         // number of busy jiffies
 }
 
 void Server::waitForConnection() {
@@ -109,7 +108,7 @@ void Server::waitForConnection() {
     addrLen = sizeof(address);
     while (1) {
         if ((newSocket = accept(fd, (struct sockaddr *)&address, (socklen_t*)&addrLen)) < 0) {
-            cerr << "Acception failed" << endl;
+            cerr << "Acceptation failed" << endl;
             exit(1);
         }
         read(newSocket, messageBuffer, BUFFER_SIZE);

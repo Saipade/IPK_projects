@@ -18,6 +18,7 @@ int main(int argc, char* argv[]) {
 
     Server *server = new Server(stoi(port));
     server->waitForConnection();
+    delete(server);
     return 0;
 
 }
