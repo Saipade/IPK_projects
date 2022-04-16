@@ -320,7 +320,7 @@ void packetHandler(u_char* packetCounter, const struct pcap_pkthdr* header, cons
     int i, j;
     for (i = 0; i < packetLength; i+=16) {
         printf("0x%.4x:  ", i);
-        // write octets hexa-like 
+        // write octets hexadecimal-like 
         for (j = i; j < i + 16  and j < packetLength ; j++) {
             if (j == i + 8)
                 printf(" ");

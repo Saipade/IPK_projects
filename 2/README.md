@@ -1,7 +1,7 @@
 # IPK 2. project - ethernet packet sniffer
 ## Brief description
-C++/C program implementing Ethernet packet sniffer.\
-Utilises libraries **pcap.h** for packet capturing, **netinet/*.h** for convinient packet type-casting.
+C/C++ program implementing Ethernet packet sniffer.\
+Utilises libraries **pcap.h** for packet capturing, **netinet/*.h** for convenient packet type-casting.
 
 Program supports different options for packet sniffing. Such as filtering dependent on packet type or port number, and packet number limitation.
 ### Supported traffic:
@@ -16,7 +16,8 @@ Program supports different options for packet sniffing. Such as filtering depend
 - ARP
 ## Usage
 ### Building
-- make all (gcc -o ipk-sniffer *.cpp -l pcap)
+- make all 
+- gcc -o ipk-sniffer *.cpp -l pcap
 ### Execution
 
 #### 0. Get information about available interfaces
@@ -152,3 +153,6 @@ dst port: 80
 - main.cpp
 - manual.pdf
 - README.md
+
+## Author
+- Maksim Tikhonov (xtikho00)
