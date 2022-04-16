@@ -1,0 +1,19 @@
+{
+    "files.associations": {
+        "cstdio": "cpp",
+        "iostream": "cpp",
+        "typeinfo": "cpp",
+        "*.tcc": "cpp",
+        "string": "cpp",
+        "string_view": "cpp",
+        "istream": "cpp",
+        "ostream": "cpp",
+        "stdexcept": "cpp",
+        "system_error": "cpp",
+        "atomic": "cpp",
+        "cstdint": "cpp",
+        "initializer_list": "cpp",
+        "csignal": "cpp",
+        "cstring": "cpp"
+    }
+}
